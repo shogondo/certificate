@@ -1,0 +1,16 @@
+Description: This is sample cloud formation template to switch AMI between ap-northeast-1 and us-west-2.
+Mappings:
+    RegionMap:
+        ap-northeast-1:
+            Name: ami-56d4ad31
+        us-west-2:
+            Name: ami-a58d0dc5
+Resources:
+    MyInstance:
+        Type: AWS::EC2::Instance
+        Properties:
+            ImageId: !FindInMap ["RegionMap", !Ref "AWS::Region", "Name"]
+            InstanceType: t2.micro
+            SecurityGroups:
+                - default
+            KeyName: default
