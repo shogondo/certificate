@@ -1,0 +1,13 @@
+Description: This is sample cloud formation template to investigate behavior of updating stack.
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-56d4ad31
+      InstanceType: t2.micro
+      SecurityGroups:
+        - default
+        - public-web-server
+      KeyName: default
+      Monitoring: True
+    DeletionPolicy: Retain
