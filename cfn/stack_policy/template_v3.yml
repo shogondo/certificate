@@ -1,0 +1,24 @@
+Description: This is sample cloud formation template to investigate behavior of stack policy.
+Resources:
+  UbuntuInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-1bfdb67c
+      InstanceType: t2.nano
+      SecurityGroups:
+        - default
+      KeyName: default
+      Tags:
+        - Key: OS
+          Value: Ubuntu
+  SuseInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-e21c7285
+      InstanceType: t2.nano
+      SecurityGroups:
+        - default
+      KeyName: default
+      Tags:
+        - Key: OS
+          Value: SuSE
