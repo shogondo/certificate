@@ -1,0 +1,38 @@
+Description: This is sample cloud formation template to investigate behavior of depends on.
+Resources:
+  AmazonLinuxInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-56d4ad31
+      InstanceType: t2.micro
+      SecurityGroups:
+        - default
+      KeyName: default
+  RedHatInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-5de0433c
+      InstanceType: t2.micro
+      SecurityGroups:
+        - default
+      KeyName: default
+  UbuntuInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-1bfdb67c
+      InstanceType: t2.micro
+      SecurityGroups:
+        - default
+      KeyName: default
+    DependsOn:
+      - AmazonLinuxInstance
+      - RedHatInstance
+  SuseInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-e21c7285
+      InstanceType: t2.micro
+      SecurityGroups:
+        - default
+      KeyName: default
+    DependsOn: UbuntuInstance
